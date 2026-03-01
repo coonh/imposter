@@ -1,0 +1,11 @@
+<ul class="player-list">
+    @for (player of players(); track player.id) {
+    <li class="player-item" [class.host]="player.isHost">
+        <div class="avatar">{{ getInitials(player.name) }}</div>
+        <span class="player-name">{{ player.name }}</span>
+        @if (player.isHost) {
+        <span class="host-badge">👑 Host</span>
+        }
+    </li>
+    }
+</ul>

@@ -1,0 +1,65 @@
+.player-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.player-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: var(--background);
+    transition: background 0.2s;
+    animation: fadeIn 0.3s ease;
+
+    &.host {
+        background: rgba(124, 58, 237, 0.08);
+        border: 1px solid rgba(124, 58, 237, 0.15);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.player-name {
+    flex: 1;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.host-badge {
+    font-size: 0.75rem;
+    color: var(--accent);
+    font-weight: 600;
+    padding: 2px 8px;
+    background: rgba(245, 158, 11, 0.1);
+    border-radius: 8px;
+}

@@ -1,0 +1,36 @@
+<div class="lobby-container">
+    <button class="back-btn" (click)="leaveLobby()">
+        ← Leave
+    </button>
+
+    <div class="code-section">
+        <p class="code-label">Lobby Code</p>
+        <div class="code-display" (click)="copyCode()">
+            <span class="code-text">{{ lobbyCode() }}</span>
+            <span class="copy-hint">tap to copy</span>
+        </div>
+    </div>
+
+    <div class="players-section">
+        <div class="section-header">
+            <h2>Players</h2>
+            <span class="player-count">{{ playerCount() }} joined</span>
+        </div>
+        <app-player-list [players]="players()" />
+    </div>
+
+    <div class="actions">
+        @if (isHost()) {
+        @if (playerCount() < 3) { <p class="waiting-text">Need at least 3 players to start</p>
+            }
+            <button class="btn-start" [class.pulse]="canStart()" [disabled]="!canStart()" (click)="startGame()">
+                🎮 Start Game
+            </button>
+            } @else {
+            <div class="waiting-host">
+                <div class="spinner"></div>
+                <p>Waiting for host to start the game...</p>
+            </div>
+            }
+    </div>
+</div>
