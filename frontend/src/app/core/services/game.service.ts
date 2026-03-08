@@ -37,6 +37,7 @@ export class GameService {
             this.gamePhase.set(data.phase);
 
             if (data.phase === GamePhase.WORD_REVEAL) {
+                this.resetVotingState();
                 const code = this.lobbyService.lobbyCode();
                 if (code) {
                     this.router.navigate(['/game', code]);
@@ -137,6 +138,16 @@ export class GameService {
 
     private resetRoundState(): void {
         this.wordAssignment.set(null);
+        this.voteResult.set(null);
+        this.finalResult.set(null);
+        this.hasVoted.set(false);
+        this.votedCount.set(0);
+        this.totalPlayers.set(0);
+        this.voteCounts.set({});
+        this.error.set(null);
+    }
+
+    private resetVotingState(): void {
         this.voteResult.set(null);
         this.finalResult.set(null);
         this.hasVoted.set(false);
