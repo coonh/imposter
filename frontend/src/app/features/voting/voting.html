@@ -11,7 +11,11 @@
             @for (player of otherPlayers(); track player.id) {
             <button class="vote-card" [class.selected]="selectedTarget() === player.id"
                 (click)="selectTarget(player.id)">
+                @if (player.character) {
+                <img class="vote-avatar-img" [src]="player.character + '_portrait_body.png'" alt="{{ player.name }}" />
+                } @else {
                 <div class="vote-avatar">{{ player.name.charAt(0).toUpperCase() }}</div>
+                }
                 <span class="vote-name">{{ player.name }}</span>
             </button>
             }
@@ -29,6 +33,30 @@
             <p class="vote-progress">{{ votedCount() }} / {{ totalPlayers() }} voted</p>
         </div>
         }
+
+        <!-- LIVE VOTES BAR CHART -->
+        <div class="live-votes-container">
+            <h3 class="live-votes-title">Live Votes</h3>
+            <div class="bar-chart">
+                @for (item of liveVotes(); track item.player.id) {
+                <div class="bar-row">
+                    <div class="bar-player-info">
+                        @if (item.player.character) {
+                        <img class="bar-avatar-img" [src]="item.player.character + '_portrait_body.png'"
+                            alt="{{ item.player.name }}" />
+                        } @else {
+                        <div class="bar-avatar-text">{{ item.player.name.charAt(0).toUpperCase() }}</div>
+                        }
+                        <span class="bar-name">{{ item.player.name }}</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" [style.width.%]="item.percentage"></div>
+                        <span class="bar-count">{{ item.count }}</span>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
     </div>
     }
 

@@ -22,6 +22,7 @@ export class GameService {
     readonly finalResult = signal<FinalResult | null>(null);
     readonly votedCount = signal(0);
     readonly totalPlayers = signal(0);
+    readonly voteCounts = signal<Record<string, number>>({});
     readonly hasVoted = signal(false);
     readonly error = signal<string | null>(null);
 
@@ -54,9 +55,12 @@ export class GameService {
             }
         });
 
-        this.socket.on<{ votedCount: number; totalPlayers: number }>('game:voteUpdate', (data) => {
+        this.socket.on<{ votedCount: number; totalPlayers: number; voteCounts: Record<string, number> }>('game:voteUpdate', (data) => {
             this.votedCount.set(data.votedCount);
             this.totalPlayers.set(data.totalPlayers);
+            if (data.voteCounts) {
+                this.voteCounts.set(data.voteCounts);
+            }
         });
 
         this.socket.on<VoteResult>('game:voteResult', (data) => {
@@ -138,6 +142,7 @@ export class GameService {
         this.hasVoted.set(false);
         this.votedCount.set(0);
         this.totalPlayers.set(0);
+        this.voteCounts.set({});
         this.error.set(null);
     }
 }

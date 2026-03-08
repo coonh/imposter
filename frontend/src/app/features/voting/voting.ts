@@ -27,10 +27,27 @@ export class Voting {
     readonly votedCount = this.gameService.votedCount;
     readonly totalPlayers = this.gameService.totalPlayers;
     readonly wordAssignment = this.gameService.wordAssignment;
+    readonly voteCounts = this.gameService.voteCounts;
 
     readonly selectedTarget = signal<string | null>(null);
 
     readonly phase = GamePhase;
+
+    readonly liveVotes = computed(() => {
+        const counts = this.voteCounts();
+        const total = this.votedCount();
+
+        return this.players().map(player => {
+            const count = counts[player.id] || 0;
+            const percentage = total > 0 ? (count / total) * 100 : 0;
+
+            return {
+                player,
+                count,
+                percentage
+            };
+        }).sort((a, b) => b.count - a.count);
+    });
 
     readonly otherPlayers = computed(() => {
         const current = this.currentPlayer();

@@ -97,11 +97,19 @@ export function registerGameHandlers(io: Server, socket: Socket): void {
 
             const allVoted = gameService.submitVote(lobby, data.voterId, data.targetId);
 
+            const voteCounts: Record<string, number> = {};
+            if (lobby.gameState?.votes) {
+                for (const targetId of Object.values(lobby.gameState.votes)) {
+                    voteCounts[targetId] = (voteCounts[targetId] || 0) + 1;
+                }
+            }
+
             // Notify all players about the vote count
             const votedCount = lobby.players.filter((p) => p.hasVoted).length;
             io.to(lobby.code).emit('game:voteUpdate', {
                 votedCount,
                 totalPlayers: lobby.players.length,
+                voteCounts,
             });
 
             if (allVoted) {
