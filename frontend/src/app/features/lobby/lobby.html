@@ -1,6 +1,6 @@
 <div class="lobby-container">
     <button class="back-btn" (click)="leaveLobby()">
-        ← Leave
+        <app-icon name="arrow-left"></app-icon> Leave
     </button>
 
     <div class="code-section">
@@ -24,7 +24,7 @@
         @if (playerCount() < 3) { <p class="waiting-text">Need at least 3 players to start</p>
             }
             <button class="btn-start" [class.pulse]="canStart()" [disabled]="!canStart()" (click)="startGame()">
-                🎮 Start Game
+                <app-icon name="play-circle"></app-icon> Start Game
             </button>
             } @else {
             <div class="waiting-host">

@@ -10,6 +10,7 @@ export interface GameState {
     word: string;
     category: string;
     imposterId: string;
+    startPlayerId: string;
     phase: GamePhase;
     votes: Record<string, string>; // voterId → targetId
     round: number;

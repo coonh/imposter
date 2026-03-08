@@ -1,18 +1,31 @@
 <div class="game-container">
-    <div class="round-info">
-        <span class="phase-badge">🔍 Word Reveal</span>
-    </div>
+    <header class="game-header">
+        <div class="character-display">
+            @if (currentPlayer()?.character) {
+            <img [src]="currentPlayer()?.character + '_portrait_body.png'" alt="Your Character" />
+            }
+        </div>
+
+        <div class="start-player-info">
+            @if (isStartPlayer()) {
+            <span class="start-text highlight"><app-icon name="star"></app-icon> You begin!</span>
+            } @else if (startPlayer()) {
+            <span class="start-text"><app-icon name="user"></app-icon> <strong>{{ startPlayer()?.name }}</strong>
+                begins</span>
+            }
+        </div>
+    </header>
 
     <div class="word-card" [class.revealed]="revealed()" [class.imposter]="isImposter()" (click)="toggleReveal()">
         <div class="card-inner">
             <div class="card-front">
-                <div class="card-icon">🃏</div>
+                <div class="card-icon"><app-icon name="layers"></app-icon></div>
                 <p class="tap-hint">Tap to reveal your role</p>
             </div>
             <div class="card-back">
                 @if (isImposter()) {
                 <div class="imposter-reveal">
-                    <div class="role-icon">🕵️</div>
+                    <div class="role-icon"><app-icon name="user-x"></app-icon></div>
                     <h2 class="role-title danger">You are the Imposter!</h2>
                     <div class="category-box">
                         <span class="category-label">Category</span>
@@ -22,15 +35,11 @@
                 </div>
                 } @else {
                 <div class="player-reveal">
-                    <div class="role-icon">✅</div>
+                    <div class="role-icon"><app-icon name="check-circle"></app-icon></div>
                     <h2 class="role-title safe">You are safe!</h2>
                     <div class="word-box">
                         <span class="word-label">Your Word</span>
                         <span class="word-value">{{ word() }}</span>
-                    </div>
-                    <div class="category-box small">
-                        <span class="category-label">Category</span>
-                        <span class="category-value">{{ category() }}</span>
                     </div>
                 </div>
                 }
@@ -43,13 +52,13 @@
         Give clues about the word. The imposter must bluff!
     </p>
 
-    @if (isHost()) {
-    <button class="btn-vote" (click)="startVoting()">
-        🗳️ Start Voting
-    </button>
-    } @else {
+    @if (isReadyForVote()) {
     <div class="waiting-vote">
-        <p>Host will start the vote when ready</p>
+        <p>Waiting for others... ({{ readyCount() }} / {{ players().length }} ready)</p>
     </div>
+    } @else {
+    <button class="btn-vote" (click)="readyForVote()">
+        <app-icon name="check-square"></app-icon> Ready for Vote ({{ readyCount() }} / {{ readyThreshold() }})
+    </button>
     }
 </div>

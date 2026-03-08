@@ -5,9 +5,9 @@ import * as lobbyService from '../services/lobby.service';
 const socketMap = new Map<string, { playerId: string; lobbyCode: string }>();
 
 export function registerLobbyHandlers(io: Server, socket: Socket): void {
-    socket.on('lobby:create', (data: { playerName: string }, callback) => {
+    socket.on('lobby:create', (data: { playerName: string; character: 'man' | 'woman' }, callback) => {
         try {
-            const { lobby, player } = lobbyService.createLobby(data.playerName);
+            const { lobby, player } = lobbyService.createLobby(data.playerName, data.character);
             socketMap.set(socket.id, { playerId: player.id, lobbyCode: lobby.code });
 
             socket.join(lobby.code);
@@ -25,9 +25,9 @@ export function registerLobbyHandlers(io: Server, socket: Socket): void {
         }
     });
 
-    socket.on('lobby:join', (data: { lobbyCode: string; playerName: string }, callback) => {
+    socket.on('lobby:join', (data: { lobbyCode: string; playerName: string; character: 'man' | 'woman' }, callback) => {
         try {
-            const { lobby, player } = lobbyService.joinLobby(data.lobbyCode, data.playerName);
+            const { lobby, player } = lobbyService.joinLobby(data.lobbyCode, data.playerName, data.character);
             socketMap.set(socket.id, { playerId: player.id, lobbyCode: lobby.code });
 
             socket.join(lobby.code);

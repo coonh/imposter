@@ -12,11 +12,16 @@ export function startGame(lobby: Lobby): void {
     const imposterIndex = Math.floor(Math.random() * lobby.players.length);
     const imposterId = lobby.players[imposterIndex].id;
 
+    // Pick random start player
+    const startPlayerIndex = Math.floor(Math.random() * lobby.players.length);
+    const startPlayerId = lobby.players[startPlayerIndex].id;
+
     // Reset all players
     for (const player of lobby.players) {
         player.isImposter = player.id === imposterId;
         player.hasVoted = false;
         player.votedFor = undefined;
+        player.isReadyForVote = false;
     }
 
     const round = lobby.gameState ? lobby.gameState.round + 1 : 1;
@@ -25,6 +30,7 @@ export function startGame(lobby: Lobby): void {
         word: entry.word,
         category: entry.category,
         imposterId,
+        startPlayerId,
         phase: GamePhase.WORD_REVEAL,
         votes: {},
         round,
@@ -116,17 +122,16 @@ export function tallyVotes(lobby: Lobby): VoteResult {
     };
 }
 
-export function imposterGuess(lobby: Lobby, guess: string): FinalResult {
+export function imposterGuess(lobby: Lobby, isCorrect: boolean): FinalResult {
     if (!lobby.gameState) {
         throw new Error('No active game');
     }
 
-    const guessCorrect = guess.toLowerCase().trim() === lobby.gameState.word.toLowerCase().trim();
     const imposter = lobby.players.find((p) => p.id === lobby.gameState!.imposterId);
 
     const result: FinalResult = {
-        winner: guessCorrect ? 'imposter' : 'players',
-        imposterGuessCorrect: guessCorrect,
+        winner: isCorrect ? 'imposter' : 'players',
+        imposterGuessCorrect: isCorrect,
         imposterId: lobby.gameState.imposterId,
         imposterName: imposter?.name ?? 'Unknown',
         word: lobby.gameState.word,

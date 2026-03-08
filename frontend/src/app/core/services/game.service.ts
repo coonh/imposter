@@ -93,6 +93,17 @@ export class GameService {
         });
     }
 
+    readyForVote(): void {
+        this.error.set(null);
+        const code = this.lobbyService.lobbyCode();
+        this.socket.emit('game:readyForVote', { lobbyCode: code }, (response: unknown) => {
+            const res = response as GenericResponse;
+            if (!res.success) {
+                this.error.set(res.error ?? 'Failed to set ready state');
+            }
+        });
+    }
+
     castVote(targetId: string): void {
         this.error.set(null);
         const code = this.lobbyService.lobbyCode();
@@ -109,10 +120,10 @@ export class GameService {
         });
     }
 
-    submitGuess(guess: string): void {
+    submitGuess(isCorrect: boolean): void {
         this.error.set(null);
         const code = this.lobbyService.lobbyCode();
-        this.socket.emit('game:imposterGuess', { lobbyCode: code, guess }, (response: unknown) => {
+        this.socket.emit('game:imposterGuess', { lobbyCode: code, isCorrect }, (response: unknown) => {
             const res = response as GenericResponse;
             if (!res.success) {
                 this.error.set(res.error ?? 'Failed to submit guess');

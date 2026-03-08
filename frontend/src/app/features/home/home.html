@@ -1,90 +1,81 @@
 <div class="home-container">
   <div class="logo-section">
-    <div class="logo-icon">🕵️</div>
+    <div class="logo-icon"><app-icon name="search"></app-icon></div>
     <h1 class="app-title">IMPOSTER</h1>
     <p class="app-subtitle">Find the imposter among you</p>
   </div>
 
   <div class="tab-bar">
-    <button
-      class="tab-btn"
-      [class.active]="activeTab() === 'create'"
-      (click)="switchTab('create')"
-    >
+    <button class="tab-btn" [class.active]="activeTab() === 'create'" (click)="switchTab('create')">
       Create Lobby
     </button>
-    <button
-      class="tab-btn"
-      [class.active]="activeTab() === 'join'"
-      (click)="switchTab('join')"
-    >
+    <button class="tab-btn" [class.active]="activeTab() === 'join'" (click)="switchTab('join')">
       Join Lobby
     </button>
   </div>
 
   @if (activeTab() === 'create') {
-    <div class="card">
-      <h2>Create a New Lobby</h2>
-      <p class="card-desc">Start a game and invite your friends</p>
-      <div class="input-group">
-        <label for="create-name">Your Name</label>
-        <input
-          id="create-name"
-          type="text"
-          placeholder="Enter your name"
-          [ngModel]="createName()"
-          (ngModelChange)="createName.set($event)"
-          maxlength="20"
-        />
+  <div class="card">
+    <h2>Create a New Lobby</h2>
+    <p class="card-desc">Start a game and invite your friends</p>
+    <div class="input-group">
+      <label>Select Character</label>
+      <div class="character-selector">
+        <button class="character-option" [class.selected]="createCharacter() === 'man'"
+          (click)="selectCharacter('create', 'man')">
+          <img src="man_portrait_body.png" alt="Gentleman" />
+        </button>
+        <button class="character-option" [class.selected]="createCharacter() === 'woman'"
+          (click)="selectCharacter('create', 'woman')">
+          <img src="woman_portrait_body.png" alt="Lady" />
+        </button>
       </div>
-      <button
-        class="btn-primary"
-        (click)="createLobby()"
-        [disabled]="!createName().trim()"
-      >
-        Create Lobby
-      </button>
     </div>
+    <div class="input-group">
+      <label for="create-name">Your Name</label>
+      <input id="create-name" type="text" placeholder="Enter your name" [ngModel]="createName()"
+        (ngModelChange)="createName.set($event)" maxlength="20" />
+    </div>
+    <button class="btn-primary" (click)="createLobby()" [disabled]="!createName().trim()">
+      Create Lobby
+    </button>
+  </div>
   }
 
   @if (activeTab() === 'join') {
-    <div class="card">
-      <h2>Join a Lobby</h2>
-      <p class="card-desc">Enter the 4-digit code to join</p>
-      <div class="input-group">
-        <label for="join-name">Your Name</label>
-        <input
-          id="join-name"
-          type="text"
-          placeholder="Enter your name"
-          [ngModel]="joinName()"
-          (ngModelChange)="joinName.set($event)"
-          maxlength="20"
-        />
+  <div class="card">
+    <h2>Join a Lobby</h2>
+    <p class="card-desc">Enter the 4-digit code to join</p>
+    <div class="input-group">
+      <label>Select Character</label>
+      <div class="character-selector">
+        <button class="character-option" [class.selected]="joinCharacter() === 'man'"
+          (click)="selectCharacter('join', 'man')">
+          <img src="man_portrait_body.png" alt="Gentleman" />
+        </button>
+        <button class="character-option" [class.selected]="joinCharacter() === 'woman'"
+          (click)="selectCharacter('join', 'woman')">
+          <img src="woman_portrait_body.png" alt="Lady" />
+        </button>
       </div>
-      <div class="input-group">
-        <label for="join-code">Lobby Code</label>
-        <input
-          id="join-code"
-          type="text"
-          placeholder="e.g. 1234"
-          [ngModel]="joinCode()"
-          (ngModelChange)="joinCode.set($event)"
-          maxlength="4"
-          class="code-input"
-        />
-      </div>
-      <button
-        class="btn-primary"
-        (click)="joinLobby()"
-        [disabled]="!joinName().trim() || joinCode().trim().length < 4"
-      >
-        Join Lobby
-      </button>
     </div>
+    <div class="input-group">
+      <label for="join-name">Your Name</label>
+      <input id="join-name" type="text" placeholder="Enter your name" [ngModel]="joinName()"
+        (ngModelChange)="joinName.set($event)" maxlength="20" />
+    </div>
+    <div class="input-group">
+      <label for="join-code">Lobby Code</label>
+      <input id="join-code" type="text" placeholder="e.g. 1234" [ngModel]="joinCode()"
+        (ngModelChange)="joinCode.set($event)" maxlength="4" class="code-input" />
+    </div>
+    <button class="btn-primary" (click)="joinLobby()" [disabled]="!joinName().trim() || joinCode().trim().length < 4">
+      Join Lobby
+    </button>
+  </div>
   }
 
   @if (error()) {
-    <div class="error-toast">{{ error() }}</div>
+  <div class="error-toast">{{ error() }}</div>
   }
 </div>

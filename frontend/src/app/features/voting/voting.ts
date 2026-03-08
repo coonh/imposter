@@ -1,13 +1,14 @@
 import { Component, ChangeDetectionStrategy, inject, signal, computed } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+
 import { GameService } from '../../core/services/game.service';
 import { LobbyService } from '../../core/services/lobby.service';
 import { GamePhase } from '../../core/models/game.model';
+import { IconComponent } from '../../shared/icon/icon.component';
 
 @Component({
     selector: 'app-voting',
     standalone: true,
-    imports: [FormsModule],
+    imports: [IconComponent],
     templateUrl: './voting.html',
     styleUrl: './voting.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -28,7 +29,6 @@ export class Voting {
     readonly wordAssignment = this.gameService.wordAssignment;
 
     readonly selectedTarget = signal<string | null>(null);
-    readonly imposterGuess = signal('');
 
     readonly phase = GamePhase;
 
@@ -66,15 +66,12 @@ export class Voting {
         this.gameService.castVote(targetId);
     }
 
-    submitGuess(): void {
-        const guess = this.imposterGuess().trim();
-        if (!guess) return;
-        this.gameService.submitGuess(guess);
+    submitGuess(isCorrect: boolean): void {
+        this.gameService.submitGuess(isCorrect);
     }
 
     newRound(): void {
         this.selectedTarget.set(null);
-        this.imposterGuess.set('');
         this.gameService.newRound();
     }
 

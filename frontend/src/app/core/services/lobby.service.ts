@@ -55,12 +55,12 @@ export class LobbyService {
         });
     }
 
-    async createLobby(playerName: string): Promise<void> {
+    async createLobby(playerName: string, character: 'man' | 'woman'): Promise<void> {
         this.error.set(null);
         await this.socket.connect();
         this.initListeners();
 
-        this.socket.emit('lobby:create', { playerName }, (response: unknown) => {
+        this.socket.emit('lobby:create', { playerName, character }, (response: unknown) => {
             const res = response as LobbyResponse;
             if (res.success && res.lobby && res.player) {
                 this.lobby.set(res.lobby);
@@ -72,12 +72,12 @@ export class LobbyService {
         });
     }
 
-    async joinLobby(code: string, playerName: string): Promise<void> {
+    async joinLobby(code: string, playerName: string, character: 'man' | 'woman'): Promise<void> {
         this.error.set(null);
         await this.socket.connect();
         this.initListeners();
 
-        this.socket.emit('lobby:join', { lobbyCode: code, playerName }, (response: unknown) => {
+        this.socket.emit('lobby:join', { lobbyCode: code, playerName, character }, (response: unknown) => {
             const res = response as LobbyResponse;
             if (res.success && res.lobby && res.player) {
                 this.lobby.set(res.lobby);

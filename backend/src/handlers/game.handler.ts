@@ -28,7 +28,7 @@ export function registerGameHandlers(io: Server, socket: Socket): void {
                     if (player && lobby.gameState) {
                         const payload = player.isImposter
                             ? { isImposter: true, category: lobby.gameState.category, word: null }
-                            : { isImposter: false, category: lobby.gameState.category, word: lobby.gameState.word };
+                            : { isImposter: false, category: '', word: lobby.gameState.word };
 
                         io.to(socketId).emit('game:wordAssigned', payload);
                     }
@@ -67,6 +67,41 @@ export function registerGameHandlers(io: Server, socket: Socket): void {
 
             if (typeof callback === 'function') {
                 callback({ success: true });
+            }
+        } catch (error: unknown) {
+            const message = error instanceof Error ? error.message : 'Unknown error';
+            if (typeof callback === 'function') {
+                callback({ success: false, error: message });
+            }
+        }
+    });
+
+    socket.on('game:readyForVote', (data: { lobbyCode: string }, callback) => {
+        try {
+            const lobby = lobbyService.getLobby(data.lobbyCode);
+            if (!lobby) throw new Error('Lobby not found');
+
+            const mapping = getSocketMap().get(socket.id);
+            if (!mapping) throw new Error('Player not in lobby');
+
+            const player = lobby.players.find(p => p.id === mapping.playerId);
+            if (!player) throw new Error('Player not found');
+
+            player.isReadyForVote = true;
+
+            const readyCount = lobby.players.filter(p => p.isReadyForVote).length;
+            const threshold = Math.floor(lobby.players.length / 2) + 1;
+
+            if (readyCount >= threshold) {
+                gameService.setPhase(lobby, GamePhase.VOTING);
+                io.to(lobby.code).emit('game:voteStarted', {});
+                io.to(lobby.code).emit('game:phaseChanged', { phase: GamePhase.VOTING });
+            }
+
+            io.to(lobby.code).emit('lobby:updated', { lobby });
+
+            if (typeof callback === 'function') {
+                callback({ success: true, readyCount, threshold });
             }
         } catch (error: unknown) {
             const message = error instanceof Error ? error.message : 'Unknown error';
@@ -120,7 +155,7 @@ export function registerGameHandlers(io: Server, socket: Socket): void {
         }
     });
 
-    socket.on('game:imposterGuess', (data: { lobbyCode: string; guess: string }, callback) => {
+    socket.on('game:imposterGuess', (data: { lobbyCode: string; isCorrect: boolean }, callback) => {
         try {
             const lobby = lobbyService.getLobby(data.lobbyCode);
             if (!lobby) throw new Error('Lobby not found');
@@ -130,7 +165,7 @@ export function registerGameHandlers(io: Server, socket: Socket): void {
                 throw new Error('Only the imposter can guess');
             }
 
-            const result = gameService.imposterGuess(lobby, data.guess);
+            const result = gameService.imposterGuess(lobby, data.isCorrect);
 
             io.to(lobby.code).emit('game:finalResult', result);
             io.to(lobby.code).emit('game:phaseChanged', { phase: GamePhase.RESULT });
@@ -166,7 +201,7 @@ export function registerGameHandlers(io: Server, socket: Socket): void {
                     if (player && lobby.gameState) {
                         const payload = player.isImposter
                             ? { isImposter: true, category: lobby.gameState.category, word: null }
-                            : { isImposter: false, category: lobby.gameState.category, word: lobby.gameState.word };
+                            : { isImposter: false, category: '', word: lobby.gameState.word };
 
                         io.to(socketId).emit('game:wordAssigned', payload);
                     }

@@ -2,11 +2,12 @@ import { Component, ChangeDetectionStrategy, inject, computed } from '@angular/c
 import { LobbyService } from '../../core/services/lobby.service';
 import { GameService } from '../../core/services/game.service';
 import { PlayerList } from './player-list/player-list';
+import { IconComponent } from '../../shared/icon/icon.component';
 
 @Component({
     selector: 'app-lobby',
     standalone: true,
-    imports: [PlayerList],
+    imports: [PlayerList, IconComponent],
     templateUrl: './lobby.html',
     styleUrl: './lobby.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,

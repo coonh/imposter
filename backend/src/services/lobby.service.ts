@@ -12,11 +12,12 @@ function generateLobbyCode(): string {
     return code;
 }
 
-export function createLobby(playerName: string): { lobby: Lobby; player: Player } {
+export function createLobby(playerName: string, character: 'man' | 'woman'): { lobby: Lobby; player: Player } {
     const code = generateLobbyCode();
     const player: Player = {
         id: uuidv4(),
         name: playerName,
+        character,
         isHost: true,
         isImposter: false,
         hasVoted: false,
@@ -33,7 +34,7 @@ export function createLobby(playerName: string): { lobby: Lobby; player: Player 
     return { lobby, player };
 }
 
-export function joinLobby(code: string, playerName: string): { lobby: Lobby; player: Player } {
+export function joinLobby(code: string, playerName: string, character: 'man' | 'woman'): { lobby: Lobby; player: Player } {
     const lobby = lobbies.get(code);
 
     if (!lobby) {
@@ -54,6 +55,7 @@ export function joinLobby(code: string, playerName: string): { lobby: Lobby; pla
     const player: Player = {
         id: uuidv4(),
         name: playerName,
+        character,
         isHost: false,
         isImposter: false,
         hasVoted: false,

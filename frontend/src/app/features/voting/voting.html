@@ -3,7 +3,7 @@
     <!-- VOTING PHASE -->
     @if (showVoting()) {
     <div class="vote-section">
-        <h2 class="section-title">🗳️ Who is the Imposter?</h2>
+        <h2 class="section-title"><app-icon name="help-circle"></app-icon> Who is the Imposter?</h2>
 
         @if (!hasVoted()) {
         <p class="vote-hint">Select the player you suspect</p>
@@ -24,7 +24,7 @@
         }
         } @else {
         <div class="voted-state">
-            <div class="check-icon">✅</div>
+            <div class="check-icon"><app-icon name="check-circle"></app-icon></div>
             <p>Vote cast! Waiting for others...</p>
             <p class="vote-progress">{{ votedCount() }} / {{ totalPlayers() }} voted</p>
         </div>
@@ -36,16 +36,17 @@
     @if (showImposterGuess()) {
     <div class="guess-section">
         <div class="caught-banner">
-            <span class="caught-icon">🚨</span>
+            <span class="caught-icon"><app-icon name="alert-triangle"></app-icon></span>
             <h2>You've been caught!</h2>
-            <p>But you have one last chance. Guess the word to win!</p>
+            <p>But you have one last chance. Say the word loud to the group and select if you guessed correctly!</p>
         </div>
 
-        <div class="guess-input-group">
-            <input type="text" placeholder="Enter your guess..." [ngModel]="imposterGuess()"
-                (ngModelChange)="imposterGuess.set($event)" class="guess-input" />
-            <button class="btn-guess" (click)="submitGuess()" [disabled]="!imposterGuess().trim()">
-                Submit Guess
+        <div class="guess-actions">
+            <button class="btn-correct" (click)="submitGuess(true)">
+                <app-icon name="check-circle"></app-icon> I guessed it!
+            </button>
+            <button class="btn-wrong" (click)="submitGuess(false)">
+                <app-icon name="x-circle"></app-icon> I was wrong
             </button>
         </div>
     </div>
@@ -54,7 +55,7 @@
     <!-- WAITING FOR IMPOSTER GUESS (non-imposter view) -->
     @if (showWaitingForGuess()) {
     <div class="waiting-section">
-        <h2>🎯 Imposter Caught!</h2>
+        <h2><app-icon name="crosshair"></app-icon> Imposter Caught!</h2>
         <p>The imposter is guessing the word...</p>
         <div class="spinner"></div>
     </div>
@@ -65,10 +66,10 @@
     <div class="result-section">
         <div class="result-banner" [class.imposter-wins]="finalResult()!.winner === 'imposter'">
             @if (finalResult()!.winner === 'imposter') {
-            <div class="result-icon">🕵️</div>
+            <div class="result-icon"><app-icon name="user-x"></app-icon></div>
             <h2>Imposter Wins!</h2>
             } @else {
-            <div class="result-icon">🎉</div>
+            <div class="result-icon"><app-icon name="award"></app-icon></div>
             <h2>Players Win!</h2>
             }
         </div>
@@ -87,7 +88,8 @@
                 <span class="detail-label">Imposter's Guess</span>
                 <span class="detail-value" [class.correct]="finalResult()!.imposterGuessCorrect"
                     [class.wrong]="!finalResult()!.imposterGuessCorrect">
-                    {{ finalResult()!.imposterGuessCorrect ? '✅ Correct!' : '❌ Wrong!' }}
+                    <app-icon [name]="finalResult()!.imposterGuessCorrect ? 'check-circle' : 'x-circle'"></app-icon>
+                    {{ finalResult()!.imposterGuessCorrect ? 'Correct!' : 'Wrong!' }}
                 </span>
             </div>
             }
@@ -96,7 +98,7 @@
         @if (isHost()) {
         <div class="result-actions">
             <button class="btn-play-again" (click)="newRound()">
-                🔄 Play Again
+                <app-icon name="refresh-cw"></app-icon> Play Again
             </button>
             <button class="btn-back" (click)="backToLobby()">
                 Back to Lobby
