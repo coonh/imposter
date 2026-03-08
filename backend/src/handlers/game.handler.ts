@@ -3,6 +3,22 @@ import * as lobbyService from '../services/lobby.service';
 import * as gameService from '../services/game.service';
 import { GamePhase } from '../models/game.model';
 import { getSocketMap } from './lobby.handler';
+import { Lobby } from '../models/lobby.model';
+
+function sendWordAssigned(io: Server, lobby: Lobby): void {
+    for (const [socketId, socketMapping] of getSocketMap().entries()) {
+        if (socketMapping.lobbyCode === lobby.code) {
+            const player = lobby.players.find((p) => p.id === socketMapping.playerId);
+            if (player && lobby.gameState) {
+                const payload = player.isImposter
+                    ? { isImposter: true, category: lobby.gameState.category, word: null }
+                    : { isImposter: false, category: '', word: lobby.gameState.word };
+
+                io.to(socketId).emit('game:wordAssigned', payload);
+            }
+        }
+    }
+}
 
 export function registerGameHandlers(io: Server, socket: Socket): void {
     socket.on('game:start', (data: { lobbyCode: string }, callback) => {
@@ -21,19 +37,7 @@ export function registerGameHandlers(io: Server, socket: Socket): void {
 
             gameService.startGame(lobby);
 
-            // Send word info individually to each player
-            for (const [socketId, socketMapping] of getSocketMap().entries()) {
-                if (socketMapping.lobbyCode === lobby.code) {
-                    const player = lobby.players.find((p) => p.id === socketMapping.playerId);
-                    if (player && lobby.gameState) {
-                        const payload = player.isImposter
-                            ? { isImposter: true, category: lobby.gameState.category, word: null }
-                            : { isImposter: false, category: '', word: lobby.gameState.word };
-
-                        io.to(socketId).emit('game:wordAssigned', payload);
-                    }
-                }
-            }
+            sendWordAssigned(io, lobby);
 
             io.to(lobby.code).emit('game:phaseChanged', { phase: GamePhase.WORD_REVEAL });
             io.to(lobby.code).emit('lobby:updated', { lobby });
@@ -49,32 +53,7 @@ export function registerGameHandlers(io: Server, socket: Socket): void {
         }
     });
 
-    socket.on('game:requestVote', (data: { lobbyCode: string }, callback) => {
-        try {
-            const lobby = lobbyService.getLobby(data.lobbyCode);
-            if (!lobby) throw new Error('Lobby not found');
 
-            const mapping = getSocketMap().get(socket.id);
-            if (!mapping || mapping.playerId !== lobby.hostId) {
-                throw new Error('Only the host can start voting');
-            }
-
-            gameService.setPhase(lobby, GamePhase.VOTING);
-
-            io.to(lobby.code).emit('game:voteStarted', {});
-            io.to(lobby.code).emit('game:phaseChanged', { phase: GamePhase.VOTING });
-            io.to(lobby.code).emit('lobby:updated', { lobby });
-
-            if (typeof callback === 'function') {
-                callback({ success: true });
-            }
-        } catch (error: unknown) {
-            const message = error instanceof Error ? error.message : 'Unknown error';
-            if (typeof callback === 'function') {
-                callback({ success: false, error: message });
-            }
-        }
-    });
 
     socket.on('game:readyForVote', (data: { lobbyCode: string }, callback) => {
         try {
@@ -194,19 +173,7 @@ export function registerGameHandlers(io: Server, socket: Socket): void {
 
             gameService.startGame(lobby);
 
-            // Send word info individually to each player
-            for (const [socketId, socketMapping] of getSocketMap().entries()) {
-                if (socketMapping.lobbyCode === lobby.code) {
-                    const player = lobby.players.find((p) => p.id === socketMapping.playerId);
-                    if (player && lobby.gameState) {
-                        const payload = player.isImposter
-                            ? { isImposter: true, category: lobby.gameState.category, word: null }
-                            : { isImposter: false, category: '', word: lobby.gameState.word };
-
-                        io.to(socketId).emit('game:wordAssigned', payload);
-                    }
-                }
-            }
+            sendWordAssigned(io, lobby);
 
             io.to(lobby.code).emit('game:phaseChanged', { phase: GamePhase.WORD_REVEAL });
             io.to(lobby.code).emit('lobby:updated', { lobby });

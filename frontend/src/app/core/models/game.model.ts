@@ -12,7 +12,6 @@ export interface Lobby {
 
 export enum GamePhase {
     WORD_REVEAL = 'WORD_REVEAL',
-    DISCUSSION = 'DISCUSSION',
     VOTING = 'VOTING',
     IMPOSTER_GUESS = 'IMPOSTER_GUESS',
     RESULT = 'RESULT',

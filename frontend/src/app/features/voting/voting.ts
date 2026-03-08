@@ -78,8 +78,4 @@ export class Voting {
     backToLobby(): void {
         this.gameService.backToLobby();
     }
-
-    getPlayerName(playerId: string): string {
-        return this.players().find((p) => p.id === playerId)?.name ?? 'Unknown';
-    }
 }

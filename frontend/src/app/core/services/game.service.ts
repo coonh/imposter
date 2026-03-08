@@ -81,18 +81,6 @@ export class GameService {
         });
     }
 
-    requestVote(): void {
-        this.error.set(null);
-        this.hasVoted.set(false);
-        const code = this.lobbyService.lobbyCode();
-        this.socket.emit('game:requestVote', { lobbyCode: code }, (response: unknown) => {
-            const res = response as GenericResponse;
-            if (!res.success) {
-                this.error.set(res.error ?? 'Failed to start voting');
-            }
-        });
-    }
-
     readyForVote(): void {
         this.error.set(null);
         const code = this.lobbyService.lobbyCode();
