@@ -1,11 +1,12 @@
 import { Component, ChangeDetectionStrategy, input } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { Player } from '../../../core/models/player.model';
 import { IconComponent } from '../../../shared/icon/icon.component';
 
 @Component({
     selector: 'app-player-list',
     standalone: true,
-    imports: [IconComponent],
+    imports: [IconComponent, TranslateModule],
     templateUrl: './player-list.html',
     styleUrl: './player-list.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,

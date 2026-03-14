@@ -2,6 +2,10 @@ import { v4 as uuidv4 } from 'uuid';
 import { Lobby } from '../models/lobby.model';
 import { Player } from '../models/player.model';
 
+const MAX_LOBBIES = 100;
+const INACTIVITY_TIMEOUT_MS = 30 * 60 * 1000; // 30 minutes
+const CLEANUP_INTERVAL_MS = 5 * 60 * 1000; // 5 minutes
+
 const lobbies = new Map<string, Lobby>();
 
 function generateLobbyCode(): string {
@@ -13,6 +17,10 @@ function generateLobbyCode(): string {
 }
 
 export function createLobby(playerName: string, character: 'man' | 'woman'): { lobby: Lobby; player: Player } {
+    if (lobbies.size >= MAX_LOBBIES) {
+        throw new Error('Server is at capacity. Please try again later.');
+    }
+
     const code = generateLobbyCode();
     const player: Player = {
         id: uuidv4(),
@@ -28,6 +36,8 @@ export function createLobby(playerName: string, character: 'man' | 'woman'): { l
         players: [player],
         hostId: player.id,
         status: 'waiting',
+        gameLanguage: 'en',
+        lastActivity: Date.now(),
     };
 
     lobbies.set(code, lobby);
@@ -62,11 +72,23 @@ export function joinLobby(code: string, playerName: string, character: 'man' | '
     };
 
     lobby.players.push(player);
+    lobby.lastActivity = Date.now();
     return { lobby, player };
 }
 
 export function getLobby(code: string): Lobby | undefined {
     return lobbies.get(code);
+}
+
+export function touchActivity(code: string): void {
+    const lobby = lobbies.get(code);
+    if (lobby) {
+        lobby.lastActivity = Date.now();
+    }
+}
+
+export function getLobbyCount(): number {
+    return lobbies.size;
 }
 
 export function removePlayer(code: string, playerId: string): Lobby | null {
@@ -103,4 +125,27 @@ export function findLobbyByPlayerId(playerId: string): Lobby | undefined {
         }
     }
     return undefined;
+}
+
+export function cleanupInactiveLobbies(): number {
+    const now = Date.now();
+    let removed = 0;
+    for (const [code, lobby] of lobbies.entries()) {
+        if (now - lobby.lastActivity > INACTIVITY_TIMEOUT_MS) {
+            lobbies.delete(code);
+            removed++;
+            console.log(`[Cleanup] Removed inactive lobby ${code} (inactive for ${Math.round((now - lobby.lastActivity) / 60000)}min)`);
+        }
+    }
+    return removed;
+}
+
+export function startCleanupInterval(): void {
+    setInterval(() => {
+        const removed = cleanupInactiveLobbies();
+        if (removed > 0) {
+            console.log(`[Cleanup] Removed ${removed} inactive lobbies. Active: ${lobbies.size}`);
+        }
+    }, CLEANUP_INTERVAL_MS);
+    console.log('[Cleanup] Inactive lobby cleanup scheduled (every 5 minutes, 30-minute timeout)');
 }

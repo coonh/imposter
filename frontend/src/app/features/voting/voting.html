@@ -3,10 +3,10 @@
     <!-- VOTING PHASE -->
     @if (showVoting()) {
     <div class="vote-section">
-        <h2 class="section-title"><app-icon name="help-circle"></app-icon> Who is the Imposter?</h2>
+        <h2 class="section-title"><app-icon name="help-circle"></app-icon> {{ 'voting.whoIsImposter' | translate }}</h2>
 
         @if (!hasVoted()) {
-        <p class="vote-hint">Select the player you suspect</p>
+        <p class="vote-hint">{{ 'voting.selectSuspect' | translate }}</p>
         <div class="player-grid">
             @for (player of otherPlayers(); track player.id) {
             <button class="vote-card" [class.selected]="selectedTarget() === player.id"
@@ -23,20 +23,20 @@
 
         @if (selectedTarget()) {
         <button class="btn-confirm" (click)="confirmVote()">
-            Confirm Vote
+            {{ 'voting.confirmVote' | translate }}
         </button>
         }
         } @else {
         <div class="voted-state">
             <div class="check-icon"><app-icon name="check-circle"></app-icon></div>
-            <p>Vote cast! Waiting for others...</p>
-            <p class="vote-progress">{{ votedCount() }} / {{ totalPlayers() }} voted</p>
+            <p>{{ 'voting.voteCast' | translate }}</p>
+            <p class="vote-progress">{{ votedCount() }} / {{ totalPlayers() }} {{ 'voting.voted' | translate }}</p>
         </div>
         }
 
         <!-- LIVE VOTES BAR CHART -->
         <div class="live-votes-container">
-            <h3 class="live-votes-title">Live Votes</h3>
+            <h3 class="live-votes-title">{{ 'voting.liveVotes' | translate }}</h3>
             <div class="bar-chart">
                 @for (item of liveVotes(); track item.player.id) {
                 <div class="bar-row">
@@ -65,16 +65,16 @@
     <div class="guess-section">
         <div class="caught-banner">
             <span class="caught-icon"><app-icon name="alert-triangle"></app-icon></span>
-            <h2>You've been caught!</h2>
-            <p>But you have one last chance. Say the word loud to the group and select if you guessed correctly!</p>
+            <h2>{{ 'voting.caughtTitle' | translate }}</h2>
+            <p>{{ 'voting.caughtDesc' | translate }}</p>
         </div>
 
         <div class="guess-actions">
             <button class="btn-correct" (click)="submitGuess(true)">
-                <app-icon name="check-circle"></app-icon> I guessed it!
+                <app-icon name="check-circle"></app-icon> {{ 'voting.guessedIt' | translate }}
             </button>
             <button class="btn-wrong" (click)="submitGuess(false)">
-                <app-icon name="x-circle"></app-icon> I was wrong
+                <app-icon name="x-circle"></app-icon> {{ 'voting.wasWrong' | translate }}
             </button>
         </div>
     </div>
@@ -83,8 +83,8 @@
     <!-- WAITING FOR IMPOSTER GUESS (non-imposter view) -->
     @if (showWaitingForGuess()) {
     <div class="waiting-section">
-        <h2><app-icon name="crosshair"></app-icon> Imposter Caught!</h2>
-        <p>The imposter is guessing the word...</p>
+        <h2><app-icon name="crosshair"></app-icon> {{ 'voting.imposterCaught' | translate }}</h2>
+        <p>{{ 'voting.guessingWord' | translate }}</p>
         <div class="spinner"></div>
     </div>
     }
@@ -95,29 +95,30 @@
         <div class="result-banner" [class.imposter-wins]="finalResult()!.winner === 'imposter'">
             @if (finalResult()!.winner === 'imposter') {
             <div class="result-icon"><app-icon name="user-x"></app-icon></div>
-            <h2>Imposter Wins!</h2>
+            <h2>{{ 'voting.imposterWins' | translate }}</h2>
             } @else {
             <div class="result-icon"><app-icon name="award"></app-icon></div>
-            <h2>Players Win!</h2>
+            <h2>{{ 'voting.playersWin' | translate }}</h2>
             }
         </div>
 
         <div class="result-details">
             <div class="detail-row">
-                <span class="detail-label">Imposter</span>
+                <span class="detail-label">{{ 'voting.imposter' | translate }}</span>
                 <span class="detail-value imposter-name">{{ finalResult()!.imposterName }}</span>
             </div>
             <div class="detail-row">
-                <span class="detail-label">The Word</span>
+                <span class="detail-label">{{ 'voting.theWord' | translate }}</span>
                 <span class="detail-value word-reveal">{{ finalResult()!.word }}</span>
             </div>
             @if (finalResult()!.imposterGuessCorrect !== undefined) {
             <div class="detail-row">
-                <span class="detail-label">Imposter's Guess</span>
+                <span class="detail-label">{{ 'voting.impostersGuess' | translate }}</span>
                 <span class="detail-value" [class.correct]="finalResult()!.imposterGuessCorrect"
                     [class.wrong]="!finalResult()!.imposterGuessCorrect">
                     <app-icon [name]="finalResult()!.imposterGuessCorrect ? 'check-circle' : 'x-circle'"></app-icon>
-                    {{ finalResult()!.imposterGuessCorrect ? 'Correct!' : 'Wrong!' }}
+                    {{ finalResult()!.imposterGuessCorrect ? ('voting.correct' | translate) : ('voting.wrong' |
+                    translate) }}
                 </span>
             </div>
             }
@@ -126,15 +127,15 @@
         @if (isHost()) {
         <div class="result-actions">
             <button class="btn-play-again" (click)="newRound()">
-                <app-icon name="refresh-cw"></app-icon> Play Again
+                <app-icon name="refresh-cw"></app-icon> {{ 'voting.playAgain' | translate }}
             </button>
             <button class="btn-back" (click)="backToLobby()">
-                Back to Lobby
+                {{ 'voting.backToLobby' | translate }}
             </button>
         </div>
         } @else {
         <div class="waiting-host-result">
-            <p>Waiting for host...</p>
+            <p>{{ 'voting.waitingForHost' | translate }}</p>
         </div>
         }
     </div>

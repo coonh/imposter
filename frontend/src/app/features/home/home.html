@@ -1,25 +1,30 @@
 <div class="home-container">
+  <div class="lang-switcher">
+    <button class="lang-btn" [class.active]="currentLang() === 'en'" (click)="switchLanguage('en')">EN</button>
+    <button class="lang-btn" [class.active]="currentLang() === 'de'" (click)="switchLanguage('de')">DE</button>
+  </div>
+
   <div class="logo-section">
     <div class="logo-icon"><app-icon name="search"></app-icon></div>
-    <h1 class="app-title">IMPOSTER</h1>
-    <p class="app-subtitle">Find the imposter among you</p>
+    <h1 class="app-title">{{ 'home.title' | translate }}</h1>
+    <p class="app-subtitle">{{ 'home.subtitle' | translate }}</p>
   </div>
 
   <div class="tab-bar">
     <button class="tab-btn" [class.active]="activeTab() === 'create'" (click)="switchTab('create')">
-      Create Lobby
+      {{ 'home.createTab' | translate }}
     </button>
     <button class="tab-btn" [class.active]="activeTab() === 'join'" (click)="switchTab('join')">
-      Join Lobby
+      {{ 'home.joinTab' | translate }}
     </button>
   </div>
 
   @if (activeTab() === 'create') {
   <div class="card">
-    <h2>Create a New Lobby</h2>
-    <p class="card-desc">Start a game and invite your friends</p>
+    <h2>{{ 'home.createTitle' | translate }}</h2>
+    <p class="card-desc">{{ 'home.createDesc' | translate }}</p>
     <div class="input-group">
-      <label>Select Character</label>
+      <label>{{ 'home.selectCharacter' | translate }}</label>
       <div class="character-selector">
         <button class="character-option" [class.selected]="createCharacter() === 'man'"
           (click)="selectCharacter('create', 'man')">
@@ -32,22 +37,22 @@
       </div>
     </div>
     <div class="input-group">
-      <label for="create-name">Your Name</label>
-      <input id="create-name" type="text" placeholder="Enter your name" [ngModel]="createName()"
+      <label for="create-name">{{ 'home.yourName' | translate }}</label>
+      <input id="create-name" type="text" [placeholder]="'home.namePlaceholder' | translate" [ngModel]="createName()"
         (ngModelChange)="createName.set($event)" maxlength="20" />
     </div>
     <button class="btn-primary" (click)="createLobby()" [disabled]="!createName().trim()">
-      Create Lobby
+      {{ 'home.createBtn' | translate }}
     </button>
   </div>
   }
 
   @if (activeTab() === 'join') {
   <div class="card">
-    <h2>Join a Lobby</h2>
-    <p class="card-desc">Enter the 4-digit code to join</p>
+    <h2>{{ 'home.joinTitle' | translate }}</h2>
+    <p class="card-desc">{{ 'home.joinDesc' | translate }}</p>
     <div class="input-group">
-      <label>Select Character</label>
+      <label>{{ 'home.selectCharacter' | translate }}</label>
       <div class="character-selector">
         <button class="character-option" [class.selected]="joinCharacter() === 'man'"
           (click)="selectCharacter('join', 'man')">
@@ -60,17 +65,17 @@
       </div>
     </div>
     <div class="input-group">
-      <label for="join-name">Your Name</label>
-      <input id="join-name" type="text" placeholder="Enter your name" [ngModel]="joinName()"
+      <label for="join-name">{{ 'home.yourName' | translate }}</label>
+      <input id="join-name" type="text" [placeholder]="'home.namePlaceholder' | translate" [ngModel]="joinName()"
         (ngModelChange)="joinName.set($event)" maxlength="20" />
     </div>
     <div class="input-group">
-      <label for="join-code">Lobby Code</label>
-      <input id="join-code" type="text" placeholder="e.g. 1234" [ngModel]="joinCode()"
+      <label for="join-code">{{ 'home.lobbyCode' | translate }}</label>
+      <input id="join-code" type="text" [placeholder]="'home.codePlaceholder' | translate" [ngModel]="joinCode()"
         (ngModelChange)="joinCode.set($event)" maxlength="4" class="code-input" />
     </div>
     <button class="btn-primary" (click)="joinLobby()" [disabled]="!joinName().trim() || joinCode().trim().length < 4">
-      Join Lobby
+      {{ 'home.joinBtn' | translate }}
     </button>
   </div>
   }

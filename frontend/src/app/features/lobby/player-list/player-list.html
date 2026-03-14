@@ -4,7 +4,7 @@
         <img class="avatar" [src]="player.character + '_portrait_body.png'" alt="Avatar" />
         <span class="player-name">{{ player.name }}</span>
         @if (player.isHost) {
-        <span class="host-badge"><app-icon name="award"></app-icon> Host</span>
+        <span class="host-badge"><app-icon name="award"></app-icon> {{ 'playerList.host' | translate }}</span>
         }
     </li>
     }

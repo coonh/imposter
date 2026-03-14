@@ -1,0 +1,77 @@
+{
+    "home": {
+        "title": "IMPOSTER",
+        "subtitle": "Find the imposter among you",
+        "createTab": "Create Lobby",
+        "joinTab": "Join Lobby",
+        "createTitle": "Create a New Lobby",
+        "createDesc": "Start a game and invite your friends",
+        "selectCharacter": "Select Character",
+        "yourName": "Your Name",
+        "namePlaceholder": "Enter your name",
+        "createBtn": "Create Lobby",
+        "joinTitle": "Join a Lobby",
+        "joinDesc": "Enter the 4-digit code to join",
+        "lobbyCode": "Lobby Code",
+        "codePlaceholder": "e.g. 1234",
+        "joinBtn": "Join Lobby"
+    },
+    "lobby": {
+        "leave": "Leave",
+        "lobbyCode": "Lobby Code",
+        "tapToCopy": "tap to copy",
+        "players": "Players",
+        "joined": "joined",
+        "needPlayers": "Need at least 3 players to start",
+        "startGame": "Start Game",
+        "waitingHost": "Waiting for host to start the game...",
+        "gameLanguage": "Game Language",
+        "english": "English",
+        "german": "Deutsch"
+    },
+    "game": {
+        "youBegin": "You begin!",
+        "begins": "begins",
+        "tapReveal": "Tap to reveal your role",
+        "imposterTitle": "You are the Imposter!",
+        "category": "Category",
+        "imposterHint": "Blend in. Don't get caught.",
+        "safeTitle": "You are safe!",
+        "yourWord": "Your Word",
+        "tapHide": "Tap to hide",
+        "instruction": "Give clues about the word. The imposter must bluff!",
+        "waitingOthers": "Waiting for others...",
+        "readyForVote": "Ready for Vote",
+        "ready": "ready"
+    },
+    "voting": {
+        "whoIsImposter": "Who is the Imposter?",
+        "selectSuspect": "Select the player you suspect",
+        "confirmVote": "Confirm Vote",
+        "voteCast": "Vote cast! Waiting for others...",
+        "voted": "voted",
+        "liveVotes": "Live Votes",
+        "caughtTitle": "You've been caught!",
+        "caughtDesc": "But you have one last chance. Say the word loud to the group and select if you guessed correctly!",
+        "guessedIt": "I guessed it!",
+        "wasWrong": "I was wrong",
+        "imposterCaught": "Imposter Caught!",
+        "guessingWord": "The imposter is guessing the word...",
+        "imposterWins": "Imposter Wins!",
+        "playersWin": "Players Win!",
+        "imposter": "Imposter",
+        "theWord": "The Word",
+        "impostersGuess": "Imposter's Guess",
+        "correct": "Correct!",
+        "wrong": "Wrong!",
+        "playAgain": "Play Again",
+        "backToLobby": "Back to Lobby",
+        "waitingForHost": "Waiting for host..."
+    },
+    "playerList": {
+        "host": "Host"
+    },
+    "language": {
+        "selectUiLang": "Language"
+    }
+}

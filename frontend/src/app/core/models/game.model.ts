@@ -7,6 +7,7 @@ export interface Lobby {
     players: Player[];
     hostId: string;
     status: LobbyStatus;
+    gameLanguage: 'en' | 'de';
     gameState?: GameState;
 }
 

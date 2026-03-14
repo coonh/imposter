@@ -36,6 +36,7 @@ export function registerGameHandlers(io: Server, socket: Socket): void {
             }
 
             gameService.startGame(lobby);
+            lobbyService.touchActivity(data.lobbyCode);
 
             sendWordAssigned(io, lobby);
 
@@ -67,6 +68,7 @@ export function registerGameHandlers(io: Server, socket: Socket): void {
             if (!player) throw new Error('Player not found');
 
             player.isReadyForVote = true;
+            lobbyService.touchActivity(data.lobbyCode);
 
             const readyCount = lobby.players.filter(p => p.isReadyForVote).length;
             const threshold = Math.floor(lobby.players.length / 2) + 1;
@@ -96,6 +98,7 @@ export function registerGameHandlers(io: Server, socket: Socket): void {
             if (!lobby) throw new Error('Lobby not found');
 
             const allVoted = gameService.submitVote(lobby, data.voterId, data.targetId);
+            lobbyService.touchActivity(data.lobbyCode);
 
             const voteCounts: Record<string, number> = {};
             if (lobby.gameState?.votes) {
@@ -153,6 +156,7 @@ export function registerGameHandlers(io: Server, socket: Socket): void {
             }
 
             const result = gameService.imposterGuess(lobby, data.isCorrect);
+            lobbyService.touchActivity(data.lobbyCode);
 
             io.to(lobby.code).emit('game:finalResult', result);
             io.to(lobby.code).emit('game:phaseChanged', { phase: GamePhase.RESULT });
@@ -180,6 +184,7 @@ export function registerGameHandlers(io: Server, socket: Socket): void {
             }
 
             gameService.startGame(lobby);
+            lobbyService.touchActivity(data.lobbyCode);
 
             sendWordAssigned(io, lobby);
 
@@ -203,6 +208,7 @@ export function registerGameHandlers(io: Server, socket: Socket): void {
             if (!lobby) throw new Error('Lobby not found');
 
             gameService.resetToLobby(lobby);
+            lobbyService.touchActivity(data.lobbyCode);
 
             io.to(lobby.code).emit('game:phaseChanged', { phase: null });
             io.to(lobby.code).emit('lobby:updated', { lobby });

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { SocketService } from './socket.service';
 import { Lobby } from '../models/game.model';
 import { Player } from '../models/player.model';
+import { StorageService } from './storage.service';
 
 interface LobbyResponse {
     success: boolean;
@@ -15,6 +16,7 @@ interface LobbyResponse {
 export class LobbyService {
     private readonly socket = inject(SocketService);
     private readonly router = inject(Router);
+    private readonly storage = inject(StorageService);
     private listenersInitialized = false;
 
     readonly lobby = signal<Lobby | null>(null);
@@ -48,6 +50,7 @@ export class LobbyService {
         this.socket.on<{ playerId: string; players: Player[] }>('lobby:playerLeft', (data) => {
             const current = this.currentPlayer();
             if (current && data.playerId === current.id) {
+                this.storage.clearSession();
                 this.lobby.set(null);
                 this.currentPlayer.set(null);
                 this.router.navigate(['/']);
@@ -65,6 +68,7 @@ export class LobbyService {
             if (res.success && res.lobby && res.player) {
                 this.lobby.set(res.lobby);
                 this.currentPlayer.set(res.player);
+                this.storage.saveSession({ lobbyCode: res.lobby.code, playerId: res.player.id });
                 this.router.navigate(['/lobby', res.lobby.code]);
             } else {
                 this.error.set(res.error ?? 'Failed to create lobby');
@@ -82,6 +86,7 @@ export class LobbyService {
             if (res.success && res.lobby && res.player) {
                 this.lobby.set(res.lobby);
                 this.currentPlayer.set(res.player);
+                this.storage.saveSession({ lobbyCode: res.lobby.code, playerId: res.player.id });
                 this.router.navigate(['/lobby', res.lobby.code]);
             } else {
                 this.error.set(res.error ?? 'Failed to join lobby');
@@ -89,11 +94,41 @@ export class LobbyService {
         });
     }
 
+    async rejoinSession(): Promise<boolean> {
+        const session = this.storage.getSession();
+        if (!session) return false;
+
+        this.error.set(null);
+        await this.socket.connect();
+        this.initListeners();
+
+        return new Promise<boolean>((resolve) => {
+            this.socket.emit('lobby:rejoin', { lobbyCode: session.lobbyCode, playerId: session.playerId }, (response: unknown) => {
+                const res = response as LobbyResponse;
+                if (res.success && res.lobby && res.player) {
+                    this.lobby.set(res.lobby);
+                    this.currentPlayer.set(res.player);
+                    resolve(true);
+                } else {
+                    this.storage.clearSession(); // Invalid session, clear it
+                    resolve(false);
+                }
+            });
+        });
+    }
+
     leaveLobby(): void {
         this.socket.emit('lobby:leave', {});
+        this.storage.clearSession();
         this.lobby.set(null);
         this.currentPlayer.set(null);
         this.listenersInitialized = false;
         this.router.navigate(['/']);
+    }
+
+    setGameLanguage(language: string): void {
+        const lobby = this.lobby();
+        if (!lobby) return;
+        this.socket.emit('lobby:setGameLanguage', { lobbyCode: lobby.code, language });
     }
 }

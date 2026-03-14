@@ -1,0 +1,1162 @@
+[
+    {
+        "word": "Klavier",
+        "category": "Instrumente"
+    },
+    {
+        "word": "Gitarre",
+        "category": "Instrumente"
+    },
+    {
+        "word": "Geige",
+        "category": "Instrumente"
+    },
+    {
+        "word": "Schlagzeug",
+        "category": "Instrumente"
+    },
+    {
+        "word": "Trompete",
+        "category": "Instrumente"
+    },
+    {
+        "word": "Saxophon",
+        "category": "Instrumente"
+    },
+    {
+        "word": "Cello",
+        "category": "Instrumente"
+    },
+    {
+        "word": "Harfe",
+        "category": "Instrumente"
+    },
+    {
+        "word": "Flöte",
+        "category": "Instrumente"
+    },
+    {
+        "word": "Akkordeon",
+        "category": "Instrumente"
+    },
+    {
+        "word": "Banjo",
+        "category": "Instrumente"
+    },
+    {
+        "word": "Posaune",
+        "category": "Instrumente"
+    },
+    {
+        "word": "Pizza",
+        "category": "Essen"
+    },
+    {
+        "word": "Sushi",
+        "category": "Essen"
+    },
+    {
+        "word": "Burger",
+        "category": "Essen"
+    },
+    {
+        "word": "Pasta",
+        "category": "Essen"
+    },
+    {
+        "word": "Taco",
+        "category": "Essen"
+    },
+    {
+        "word": "Croissant",
+        "category": "Essen"
+    },
+    {
+        "word": "Ramen",
+        "category": "Essen"
+    },
+    {
+        "word": "Paella",
+        "category": "Essen"
+    },
+    {
+        "word": "Teigtasche",
+        "category": "Essen"
+    },
+    {
+        "word": "Falafel",
+        "category": "Essen"
+    },
+    {
+        "word": "Lasagne",
+        "category": "Essen"
+    },
+    {
+        "word": "Brezel",
+        "category": "Essen"
+    },
+    {
+        "word": "Basketball",
+        "category": "Sport"
+    },
+    {
+        "word": "Tennis",
+        "category": "Sport"
+    },
+    {
+        "word": "Schwimmen",
+        "category": "Sport"
+    },
+    {
+        "word": "Fußball",
+        "category": "Sport"
+    },
+    {
+        "word": "Boxen",
+        "category": "Sport"
+    },
+    {
+        "word": "Golf",
+        "category": "Sport"
+    },
+    {
+        "word": "Cricket",
+        "category": "Sport"
+    },
+    {
+        "word": "Rugby",
+        "category": "Sport"
+    },
+    {
+        "word": "Fechten",
+        "category": "Sport"
+    },
+    {
+        "word": "Bogenschießen",
+        "category": "Sport"
+    },
+    {
+        "word": "Surfen",
+        "category": "Sport"
+    },
+    {
+        "word": "Badminton",
+        "category": "Sport"
+    },
+    {
+        "word": "Mars",
+        "category": "Planeten"
+    },
+    {
+        "word": "Jupiter",
+        "category": "Planeten"
+    },
+    {
+        "word": "Saturn",
+        "category": "Planeten"
+    },
+    {
+        "word": "Neptun",
+        "category": "Planeten"
+    },
+    {
+        "word": "Venus",
+        "category": "Planeten"
+    },
+    {
+        "word": "Merkur",
+        "category": "Planeten"
+    },
+    {
+        "word": "Uranus",
+        "category": "Planeten"
+    },
+    {
+        "word": "Erde",
+        "category": "Planeten"
+    },
+    {
+        "word": "Python",
+        "category": "Programmiersprachen"
+    },
+    {
+        "word": "JavaScript",
+        "category": "Programmiersprachen"
+    },
+    {
+        "word": "Rust",
+        "category": "Programmiersprachen"
+    },
+    {
+        "word": "TypeScript",
+        "category": "Programmiersprachen"
+    },
+    {
+        "word": "Java",
+        "category": "Programmiersprachen"
+    },
+    {
+        "word": "Swift",
+        "category": "Programmiersprachen"
+    },
+    {
+        "word": "Kotlin",
+        "category": "Programmiersprachen"
+    },
+    {
+        "word": "Ruby",
+        "category": "Programmiersprachen"
+    },
+    {
+        "word": "Titanic",
+        "category": "Filme"
+    },
+    {
+        "word": "Inception",
+        "category": "Filme"
+    },
+    {
+        "word": "Avatar",
+        "category": "Filme"
+    },
+    {
+        "word": "Gladiator",
+        "category": "Filme"
+    },
+    {
+        "word": "Matrix",
+        "category": "Filme"
+    },
+    {
+        "word": "Interstellar",
+        "category": "Filme"
+    },
+    {
+        "word": "Der weiße Hai",
+        "category": "Filme"
+    },
+    {
+        "word": "Psycho",
+        "category": "Filme"
+    },
+    {
+        "word": "Alien",
+        "category": "Filme"
+    },
+    {
+        "word": "Die Eiskönigin",
+        "category": "Filme"
+    },
+    {
+        "word": "Shrek",
+        "category": "Filme"
+    },
+    {
+        "word": "Rocky",
+        "category": "Filme"
+    },
+    {
+        "word": "Löwe",
+        "category": "Tiere"
+    },
+    {
+        "word": "Elefant",
+        "category": "Tiere"
+    },
+    {
+        "word": "Pinguin",
+        "category": "Tiere"
+    },
+    {
+        "word": "Delfin",
+        "category": "Tiere"
+    },
+    {
+        "word": "Adler",
+        "category": "Tiere"
+    },
+    {
+        "word": "Chamäleon",
+        "category": "Tiere"
+    },
+    {
+        "word": "Giraffe",
+        "category": "Tiere"
+    },
+    {
+        "word": "Oktopus",
+        "category": "Tiere"
+    },
+    {
+        "word": "Panther",
+        "category": "Tiere"
+    },
+    {
+        "word": "Flamingo",
+        "category": "Tiere"
+    },
+    {
+        "word": "Koala",
+        "category": "Tiere"
+    },
+    {
+        "word": "Gepard",
+        "category": "Tiere"
+    },
+    {
+        "word": "Eiffelturm",
+        "category": "Wahrzeichen"
+    },
+    {
+        "word": "Kolosseum",
+        "category": "Wahrzeichen"
+    },
+    {
+        "word": "Chinesische Mauer",
+        "category": "Wahrzeichen"
+    },
+    {
+        "word": "Freiheitsstatue",
+        "category": "Wahrzeichen"
+    },
+    {
+        "word": "Taj Mahal",
+        "category": "Wahrzeichen"
+    },
+    {
+        "word": "Big Ben",
+        "category": "Wahrzeichen"
+    },
+    {
+        "word": "Machu Picchu",
+        "category": "Wahrzeichen"
+    },
+    {
+        "word": "Pyramiden von Gizeh",
+        "category": "Wahrzeichen"
+    },
+    {
+        "word": "Stonehenge",
+        "category": "Wahrzeichen"
+    },
+    {
+        "word": "Parthenon",
+        "category": "Wahrzeichen"
+    },
+    {
+        "word": "Einstein",
+        "category": "Wissenschaftler"
+    },
+    {
+        "word": "Newton",
+        "category": "Wissenschaftler"
+    },
+    {
+        "word": "Tesla",
+        "category": "Wissenschaftler"
+    },
+    {
+        "word": "Darwin",
+        "category": "Wissenschaftler"
+    },
+    {
+        "word": "Curie",
+        "category": "Wissenschaftler"
+    },
+    {
+        "word": "Galileo",
+        "category": "Wissenschaftler"
+    },
+    {
+        "word": "Hawking",
+        "category": "Wissenschaftler"
+    },
+    {
+        "word": "Da Vinci",
+        "category": "Wissenschaftler"
+    },
+    {
+        "word": "Hubschrauber",
+        "category": "Fahrzeuge"
+    },
+    {
+        "word": "U-Boot",
+        "category": "Fahrzeuge"
+    },
+    {
+        "word": "Motorrad",
+        "category": "Fahrzeuge"
+    },
+    {
+        "word": "Segelboot",
+        "category": "Fahrzeuge"
+    },
+    {
+        "word": "Zeppelin",
+        "category": "Fahrzeuge"
+    },
+    {
+        "word": "Kanu",
+        "category": "Fahrzeuge"
+    },
+    {
+        "word": "Straßenbahn",
+        "category": "Fahrzeuge"
+    },
+    {
+        "word": "Heißluftballon",
+        "category": "Fahrzeuge"
+    },
+    {
+        "word": "Monopoly",
+        "category": "Brettspiele"
+    },
+    {
+        "word": "Schach",
+        "category": "Brettspiele"
+    },
+    {
+        "word": "Scrabble",
+        "category": "Brettspiele"
+    },
+    {
+        "word": "Catan",
+        "category": "Brettspiele"
+    },
+    {
+        "word": "Risiko",
+        "category": "Brettspiele"
+    },
+    {
+        "word": "Cluedo",
+        "category": "Brettspiele"
+    },
+    {
+        "word": "Schiffe versenken",
+        "category": "Brettspiele"
+    },
+    {
+        "word": "Dame",
+        "category": "Brettspiele"
+    },
+    {
+        "word": "Sonnenblume",
+        "category": "Blumen"
+    },
+    {
+        "word": "Rose",
+        "category": "Blumen"
+    },
+    {
+        "word": "Tulpe",
+        "category": "Blumen"
+    },
+    {
+        "word": "Orchidee",
+        "category": "Blumen"
+    },
+    {
+        "word": "Gänseblümchen",
+        "category": "Blumen"
+    },
+    {
+        "word": "Lilie",
+        "category": "Blumen"
+    },
+    {
+        "word": "Lavendel",
+        "category": "Blumen"
+    },
+    {
+        "word": "Hibiskus",
+        "category": "Blumen"
+    },
+    {
+        "word": "Tokio",
+        "category": "Hauptstädte"
+    },
+    {
+        "word": "Paris",
+        "category": "Hauptstädte"
+    },
+    {
+        "word": "London",
+        "category": "Hauptstädte"
+    },
+    {
+        "word": "Berlin",
+        "category": "Hauptstädte"
+    },
+    {
+        "word": "Rom",
+        "category": "Hauptstädte"
+    },
+    {
+        "word": "Kairo",
+        "category": "Hauptstädte"
+    },
+    {
+        "word": "Moskau",
+        "category": "Hauptstädte"
+    },
+    {
+        "word": "Ottawa",
+        "category": "Hauptstädte"
+    },
+    {
+        "word": "Stockholm",
+        "category": "Hauptstädte"
+    },
+    {
+        "word": "Athen",
+        "category": "Hauptstädte"
+    },
+    {
+        "word": "Shakespeare",
+        "category": "Autoren"
+    },
+    {
+        "word": "Tolkien",
+        "category": "Autoren"
+    },
+    {
+        "word": "Hemingway",
+        "category": "Autoren"
+    },
+    {
+        "word": "Agatha Christie",
+        "category": "Autoren"
+    },
+    {
+        "word": "Edgar Allan Poe",
+        "category": "Autoren"
+    },
+    {
+        "word": "Jane Austen",
+        "category": "Autoren"
+    },
+    {
+        "word": "Mark Twain",
+        "category": "Autoren"
+    },
+    {
+        "word": "Charles Dickens",
+        "category": "Autoren"
+    },
+    {
+        "word": "Diamant",
+        "category": "Edelsteine"
+    },
+    {
+        "word": "Rubin",
+        "category": "Edelsteine"
+    },
+    {
+        "word": "Smaragd",
+        "category": "Edelsteine"
+    },
+    {
+        "word": "Saphir",
+        "category": "Edelsteine"
+    },
+    {
+        "word": "Amethyst",
+        "category": "Edelsteine"
+    },
+    {
+        "word": "Opal",
+        "category": "Edelsteine"
+    },
+    {
+        "word": "Topas",
+        "category": "Edelsteine"
+    },
+    {
+        "word": "Jade",
+        "category": "Edelsteine"
+    },
+    {
+        "word": "Tornado",
+        "category": "Wetter"
+    },
+    {
+        "word": "Schneesturm",
+        "category": "Wetter"
+    },
+    {
+        "word": "Hurrikan",
+        "category": "Wetter"
+    },
+    {
+        "word": "Donner",
+        "category": "Wetter"
+    },
+    {
+        "word": "Hagelsturm",
+        "category": "Wetter"
+    },
+    {
+        "word": "Regenbogen",
+        "category": "Wetter"
+    },
+    {
+        "word": "Nebel",
+        "category": "Wetter"
+    },
+    {
+        "word": "Nieselregen",
+        "category": "Wetter"
+    },
+    {
+        "word": "Pirat",
+        "category": "Mythologie & Fantasy"
+    },
+    {
+        "word": "Drache",
+        "category": "Mythologie & Fantasy"
+    },
+    {
+        "word": "Einhorn",
+        "category": "Mythologie & Fantasy"
+    },
+    {
+        "word": "Phönix",
+        "category": "Mythologie & Fantasy"
+    },
+    {
+        "word": "Minotaurus",
+        "category": "Mythologie & Fantasy"
+    },
+    {
+        "word": "Greif",
+        "category": "Mythologie & Fantasy"
+    },
+    {
+        "word": "Meerjungfrau",
+        "category": "Mythologie & Fantasy"
+    },
+    {
+        "word": "Krake",
+        "category": "Mythologie & Fantasy"
+    },
+    {
+        "word": "Werwolf",
+        "category": "Mythologie & Fantasy"
+    },
+    {
+        "word": "Medusa",
+        "category": "Mythologie & Fantasy"
+    },
+    {
+        "word": "Teleskop",
+        "category": "Erfindungen"
+    },
+    {
+        "word": "Druckerpresse",
+        "category": "Erfindungen"
+    },
+    {
+        "word": "Kompass",
+        "category": "Erfindungen"
+    },
+    {
+        "word": "Glühbirne",
+        "category": "Erfindungen"
+    },
+    {
+        "word": "Dynamit",
+        "category": "Erfindungen"
+    },
+    {
+        "word": "Telefon",
+        "category": "Erfindungen"
+    },
+    {
+        "word": "Penizillin",
+        "category": "Erfindungen"
+    },
+    {
+        "word": "Fernseher",
+        "category": "Erfindungen"
+    },
+    {
+        "word": "Espresso",
+        "category": "Getränke"
+    },
+    {
+        "word": "Limonade",
+        "category": "Getränke"
+    },
+    {
+        "word": "Milchshake",
+        "category": "Getränke"
+    },
+    {
+        "word": "Smoothie",
+        "category": "Getränke"
+    },
+    {
+        "word": "Heiße Schokolade",
+        "category": "Getränke"
+    },
+    {
+        "word": "Champagner",
+        "category": "Getränke"
+    },
+    {
+        "word": "Mojito",
+        "category": "Getränke"
+    },
+    {
+        "word": "Apfelmost",
+        "category": "Getränke"
+    },
+    {
+        "word": "Eiche",
+        "category": "Bäume"
+    },
+    {
+        "word": "Weide",
+        "category": "Bäume"
+    },
+    {
+        "word": "Ahorn",
+        "category": "Bäume"
+    },
+    {
+        "word": "Mammutbaum",
+        "category": "Bäume"
+    },
+    {
+        "word": "Birke",
+        "category": "Bäume"
+    },
+    {
+        "word": "Palme",
+        "category": "Bäume"
+    },
+    {
+        "word": "Kirschblüte",
+        "category": "Bäume"
+    },
+    {
+        "word": "Affenbrotbaum",
+        "category": "Bäume"
+    },
+    {
+        "word": "Kleopatra",
+        "category": "Historische Persönlichkeiten"
+    },
+    {
+        "word": "Napoleon",
+        "category": "Historische Persönlichkeiten"
+    },
+    {
+        "word": "Julius Cäsar",
+        "category": "Historische Persönlichkeiten"
+    },
+    {
+        "word": "Dschingis Khan",
+        "category": "Historische Persönlichkeiten"
+    },
+    {
+        "word": "Alexander der Große",
+        "category": "Historische Persönlichkeiten"
+    },
+    {
+        "word": "Königin Victoria",
+        "category": "Historische Persönlichkeiten"
+    },
+    {
+        "word": "Galileo",
+        "category": "Historische Persönlichkeiten"
+    },
+    {
+        "word": "Marco Polo",
+        "category": "Historische Persönlichkeiten"
+    },
+    {
+        "word": "Sahara",
+        "category": "Wüsten"
+    },
+    {
+        "word": "Gobi",
+        "category": "Wüsten"
+    },
+    {
+        "word": "Kalahari",
+        "category": "Wüsten"
+    },
+    {
+        "word": "Atacama",
+        "category": "Wüsten"
+    },
+    {
+        "word": "Mojave",
+        "category": "Wüsten"
+    },
+    {
+        "word": "Arabische Wüste",
+        "category": "Wüsten"
+    },
+    {
+        "word": "Antarktische Wüste",
+        "category": "Wüsten"
+    },
+    {
+        "word": "Sonora",
+        "category": "Wüsten"
+    },
+    {
+        "word": "Andromeda",
+        "category": "Weltraum"
+    },
+    {
+        "word": "Schwarzes Loch",
+        "category": "Weltraum"
+    },
+    {
+        "word": "Nebel",
+        "category": "Weltraum"
+    },
+    {
+        "word": "Supernova",
+        "category": "Weltraum"
+    },
+    {
+        "word": "Asteroid",
+        "category": "Weltraum"
+    },
+    {
+        "word": "Komet",
+        "category": "Weltraum"
+    },
+    {
+        "word": "Milchstraße",
+        "category": "Weltraum"
+    },
+    {
+        "word": "Sternbild",
+        "category": "Weltraum"
+    },
+    {
+        "word": "Velociraptor",
+        "category": "Dinosaurier"
+    },
+    {
+        "word": "Tyrannosaurus",
+        "category": "Dinosaurier"
+    },
+    {
+        "word": "Triceratops",
+        "category": "Dinosaurier"
+    },
+    {
+        "word": "Stegosaurus",
+        "category": "Dinosaurier"
+    },
+    {
+        "word": "Brontosaurus",
+        "category": "Dinosaurier"
+    },
+    {
+        "word": "Pterodaktylus",
+        "category": "Dinosaurier"
+    },
+    {
+        "word": "Spinosaurus",
+        "category": "Dinosaurier"
+    },
+    {
+        "word": "Ankylosaurus",
+        "category": "Dinosaurier"
+    },
+    {
+        "word": "Zimt",
+        "category": "Gewürze"
+    },
+    {
+        "word": "Safran",
+        "category": "Gewürze"
+    },
+    {
+        "word": "Kurkuma",
+        "category": "Gewürze"
+    },
+    {
+        "word": "Paprika",
+        "category": "Gewürze"
+    },
+    {
+        "word": "Vanille",
+        "category": "Gewürze"
+    },
+    {
+        "word": "Kardamom",
+        "category": "Gewürze"
+    },
+    {
+        "word": "Wasabi",
+        "category": "Gewürze"
+    },
+    {
+        "word": "Muskatnuss",
+        "category": "Gewürze"
+    },
+    {
+        "word": "Amazonas",
+        "category": "Flüsse"
+    },
+    {
+        "word": "Nil",
+        "category": "Flüsse"
+    },
+    {
+        "word": "Donau",
+        "category": "Flüsse"
+    },
+    {
+        "word": "Themse",
+        "category": "Flüsse"
+    },
+    {
+        "word": "Mississippi",
+        "category": "Flüsse"
+    },
+    {
+        "word": "Ganges",
+        "category": "Flüsse"
+    },
+    {
+        "word": "Jangtse",
+        "category": "Flüsse"
+    },
+    {
+        "word": "Rhein",
+        "category": "Flüsse"
+    },
+    {
+        "word": "Walzer",
+        "category": "Tänze"
+    },
+    {
+        "word": "Tango",
+        "category": "Tänze"
+    },
+    {
+        "word": "Salsa",
+        "category": "Tänze"
+    },
+    {
+        "word": "Ballett",
+        "category": "Tänze"
+    },
+    {
+        "word": "Flamenco",
+        "category": "Tänze"
+    },
+    {
+        "word": "Samba",
+        "category": "Tänze"
+    },
+    {
+        "word": "Breakdance",
+        "category": "Tänze"
+    },
+    {
+        "word": "Polka",
+        "category": "Tänze"
+    },
+    {
+        "word": "Mona Lisa",
+        "category": "Berühmte Gemälde"
+    },
+    {
+        "word": "Sternennacht",
+        "category": "Berühmte Gemälde"
+    },
+    {
+        "word": "Der Schrei",
+        "category": "Berühmte Gemälde"
+    },
+    {
+        "word": "Mädchen mit dem Perlenohrring",
+        "category": "Berühmte Gemälde"
+    },
+    {
+        "word": "Das letzte Abendmahl",
+        "category": "Berühmte Gemälde"
+    },
+    {
+        "word": "Die Beständigkeit der Erinnerung",
+        "category": "Berühmte Gemälde"
+    },
+    {
+        "word": "Guernica",
+        "category": "Berühmte Gemälde"
+    },
+    {
+        "word": "Die Geburt der Venus",
+        "category": "Berühmte Gemälde"
+    },
+    {
+        "word": "Sherlock Holmes",
+        "category": "Fiktive Figuren"
+    },
+    {
+        "word": "Dracula",
+        "category": "Fiktive Figuren"
+    },
+    {
+        "word": "Robin Hood",
+        "category": "Fiktive Figuren"
+    },
+    {
+        "word": "Frankenstein",
+        "category": "Fiktive Figuren"
+    },
+    {
+        "word": "James Bond",
+        "category": "Fiktive Figuren"
+    },
+    {
+        "word": "Harry Potter",
+        "category": "Fiktive Figuren"
+    },
+    {
+        "word": "Gandalf",
+        "category": "Fiktive Figuren"
+    },
+    {
+        "word": "Darth Vader",
+        "category": "Fiktive Figuren"
+    },
+    {
+        "word": "Seide",
+        "category": "Stoffe"
+    },
+    {
+        "word": "Samt",
+        "category": "Stoffe"
+    },
+    {
+        "word": "Denim",
+        "category": "Stoffe"
+    },
+    {
+        "word": "Kaschmir",
+        "category": "Stoffe"
+    },
+    {
+        "word": "Leinen",
+        "category": "Stoffe"
+    },
+    {
+        "word": "Tweed",
+        "category": "Stoffe"
+    },
+    {
+        "word": "Flanell",
+        "category": "Stoffe"
+    },
+    {
+        "word": "Satin",
+        "category": "Stoffe"
+    },
+    {
+        "word": "Cheddar",
+        "category": "Käsesorten"
+    },
+    {
+        "word": "Brie",
+        "category": "Käsesorten"
+    },
+    {
+        "word": "Gouda",
+        "category": "Käsesorten"
+    },
+    {
+        "word": "Mozzarella",
+        "category": "Käsesorten"
+    },
+    {
+        "word": "Parmesan",
+        "category": "Käsesorten"
+    },
+    {
+        "word": "Camembert",
+        "category": "Käsesorten"
+    },
+    {
+        "word": "Roquefort",
+        "category": "Käsesorten"
+    },
+    {
+        "word": "Feta",
+        "category": "Käsesorten"
+    },
+    {
+        "word": "Zeus",
+        "category": "Griechische Götter"
+    },
+    {
+        "word": "Poseidon",
+        "category": "Griechische Götter"
+    },
+    {
+        "word": "Athene",
+        "category": "Griechische Götter"
+    },
+    {
+        "word": "Apollon",
+        "category": "Griechische Götter"
+    },
+    {
+        "word": "Aphrodite",
+        "category": "Griechische Götter"
+    },
+    {
+        "word": "Hermes",
+        "category": "Griechische Götter"
+    },
+    {
+        "word": "Ares",
+        "category": "Griechische Götter"
+    },
+    {
+        "word": "Artemis",
+        "category": "Griechische Götter"
+    },
+    {
+        "word": "Great Barrier Reef",
+        "category": "Naturwunder"
+    },
+    {
+        "word": "Nordlichter",
+        "category": "Naturwunder"
+    },
+    {
+        "word": "Grand Canyon",
+        "category": "Naturwunder"
+    },
+    {
+        "word": "Victoriafälle",
+        "category": "Naturwunder"
+    },
+    {
+        "word": "Niagarafälle",
+        "category": "Naturwunder"
+    },
+    {
+        "word": "Mount Everest",
+        "category": "Naturwunder"
+    },
+    {
+        "word": "Amazonas-Regenwald",
+        "category": "Naturwunder"
+    },
+    {
+        "word": "Totes Meer",
+        "category": "Naturwunder"
+    }
+]

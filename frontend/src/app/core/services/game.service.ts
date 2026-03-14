@@ -42,7 +42,7 @@ export class GameService {
                 if (code) {
                     this.router.navigate(['/game', code]);
                 }
-            } else if (data.phase === GamePhase.VOTING) {
+            } else if (data.phase === GamePhase.VOTING || data.phase === GamePhase.IMPOSTER_GUESS || data.phase === GamePhase.RESULT) {
                 const code = this.lobbyService.lobbyCode();
                 if (code) {
                     this.router.navigate(['/vote', code]);

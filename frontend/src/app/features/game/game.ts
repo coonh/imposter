@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy, inject, signal, computed } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { GameService } from '../../core/services/game.service';
 import { LobbyService } from '../../core/services/lobby.service';
 import { IconComponent } from '../../shared/icon/icon.component';
@@ -6,7 +7,7 @@ import { IconComponent } from '../../shared/icon/icon.component';
 @Component({
     selector: 'app-game',
     standalone: true,
-    imports: [IconComponent],
+    imports: [IconComponent, TranslateModule],
     templateUrl: './game.html',
     styleUrl: './game.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,

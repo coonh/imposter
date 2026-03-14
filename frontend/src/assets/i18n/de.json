@@ -1,0 +1,77 @@
+{
+    "home": {
+        "title": "IMPOSTER",
+        "subtitle": "Finde den Hochstapler unter euch",
+        "createTab": "Lobby erstellen",
+        "joinTab": "Lobby beitreten",
+        "createTitle": "Neue Lobby erstellen",
+        "createDesc": "Starte ein Spiel und lade deine Freunde ein",
+        "selectCharacter": "Charakter wählen",
+        "yourName": "Dein Name",
+        "namePlaceholder": "Name eingeben",
+        "createBtn": "Lobby erstellen",
+        "joinTitle": "Einer Lobby beitreten",
+        "joinDesc": "Gib den 4-stelligen Code ein",
+        "lobbyCode": "Lobby-Code",
+        "codePlaceholder": "z.B. 1234",
+        "joinBtn": "Lobby beitreten"
+    },
+    "lobby": {
+        "leave": "Verlassen",
+        "lobbyCode": "Lobby-Code",
+        "tapToCopy": "Tippen zum Kopieren",
+        "players": "Spieler",
+        "joined": "beigetreten",
+        "needPlayers": "Mindestens 3 Spieler benötigt",
+        "startGame": "Spiel starten",
+        "waitingHost": "Warte auf den Gastgeber...",
+        "gameLanguage": "Spielsprache",
+        "english": "English",
+        "german": "Deutsch"
+    },
+    "game": {
+        "youBegin": "Du fängst an!",
+        "begins": "beginnt",
+        "tapReveal": "Tippe um deine Rolle zu sehen",
+        "imposterTitle": "Du bist der Hochstapler!",
+        "category": "Kategorie",
+        "imposterHint": "Füge dich ein. Lass dich nicht erwischen.",
+        "safeTitle": "Du bist sicher!",
+        "yourWord": "Dein Wort",
+        "tapHide": "Tippe zum Verstecken",
+        "instruction": "Gebt Hinweise zum Wort. Der Hochstapler muss bluffen!",
+        "waitingOthers": "Warte auf andere...",
+        "readyForVote": "Bereit zur Abstimmung",
+        "ready": "bereit"
+    },
+    "voting": {
+        "whoIsImposter": "Wer ist der Hochstapler?",
+        "selectSuspect": "Wähle den verdächtigen Spieler",
+        "confirmVote": "Abstimmung bestätigen",
+        "voteCast": "Stimme abgegeben! Warte auf andere...",
+        "voted": "abgestimmt",
+        "liveVotes": "Live-Stimmen",
+        "caughtTitle": "Du wurdest erwischt!",
+        "caughtDesc": "Aber du hast eine letzte Chance. Sag das Wort laut zur Gruppe und wähle ob du richtig geraten hast!",
+        "guessedIt": "Ich hab's erraten!",
+        "wasWrong": "Ich lag falsch",
+        "imposterCaught": "Hochstapler erwischt!",
+        "guessingWord": "Der Hochstapler rät das Wort...",
+        "imposterWins": "Hochstapler gewinnt!",
+        "playersWin": "Spieler gewinnen!",
+        "imposter": "Hochstapler",
+        "theWord": "Das Wort",
+        "impostersGuess": "Tipp des Hochstaplers",
+        "correct": "Richtig!",
+        "wrong": "Falsch!",
+        "playAgain": "Nochmal spielen",
+        "backToLobby": "Zurück zur Lobby",
+        "waitingForHost": "Warte auf Gastgeber..."
+    },
+    "playerList": {
+        "host": "Gastgeber"
+    },
+    "language": {
+        "selectUiLang": "Sprache"
+    }
+}

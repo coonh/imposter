@@ -1,5 +1,6 @@
 import { Injectable, signal, NgZone, inject } from '@angular/core';
 import { io, Socket } from 'socket.io-client';
+import { environment } from '../../../environments/environment';
 
 type EventHandler = { event: string; handler: (data: unknown) => void };
 
@@ -21,7 +22,7 @@ export class SocketService {
                 // Socket exists but disconnected — reconnect
                 this.socket.connect();
             } else {
-                this.socket = io('http://localhost:3000', {
+                this.socket = io(environment.apiUrl, {
                     transports: ['websocket', 'polling'],
                 });
             }

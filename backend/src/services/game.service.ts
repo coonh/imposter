@@ -1,11 +1,16 @@
 import { Lobby } from '../models/lobby.model';
 import { GamePhase, GameState, VoteResult, FinalResult, WordEntry } from '../models/game.model';
-import words from '../data/words.json';
+import enWords from '../data/en_words.json';
+import deWords from '../data/de_words.json';
 
-const wordBank: WordEntry[] = words;
+const wordBanks: Record<string, WordEntry[]> = {
+    en: enWords,
+    de: deWords,
+};
 
 export function startGame(lobby: Lobby): void {
-    // Pick random word
+    // Pick word bank based on lobby language
+    const wordBank = wordBanks[lobby.gameLanguage] || wordBanks['en'];
     const entry = wordBank[Math.floor(Math.random() * wordBank.length)];
 
     // Pick random imposter
