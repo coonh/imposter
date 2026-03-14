@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://coonh.de:3001'
+  apiUrl: 'https://coonh.de',
+  socketPath: '/imposter/socket.io'
 };

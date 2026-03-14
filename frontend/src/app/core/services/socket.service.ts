@@ -23,7 +23,7 @@ export class SocketService {
                 this.socket.connect();
             } else {
                 this.socket = io(environment.apiUrl, {
-                    transports: ['websocket', 'polling'],
+                    path: (environment as any).socketPath || '/socket.io', // use explicitly provided path
                 });
             }
 
